@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pal Gajera — Python Developer</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/jpeg" href="img/fav_icon.png" />
+  <!-- Google Fonts: Syne (display) + JetBrains Mono (code feel) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════════════
+       PAGE LOADER
+  ═══════════════════════════════════════════════ -->
+  <div id="loader">
+    <div class="loader-inner">
+      <span class="loader-code">&lt;/&gt;</span>
+      <div class="loader-bar">
+        <div class="loader-fill"></div>
+      </div>
+      <span class="loader-text">initializing...</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       CUSTOM CURSOR
+  ═══════════════════════════════════════════════ -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- ═══════════════════════════════════════════════
+       STICKY NAVIGATION
+  ═══════════════════════════════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <!-- Logo -->
+      <a href="#hero" class="nav-logo">
+        <span class="logo-bracket">{</span>
+        <span class="logo-text">PG</span>
+        <span class="logo-bracket">}</span>
+      </a>
+
+      <!-- Nav Links -->
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+        <li><a href="#skills" class="nav-link" data-section="skills">Skills</a></li>
+        <li><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
+        <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+      </ul>
+
+      <!-- Dark Mode + Hamburger -->
+      <div class="nav-actions">
+        <button id="themeToggle" aria-label="Toggle theme" title="Toggle dark/light mode">
+          <span class="theme-icon">◐</span>
+        </button>
+        <button id="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════
+       HERO SECTION
+  ═══════════════════════════════════════════════ -->
+  <section id="hero">
+    <!-- Animated canvas background -->
+    <canvas id="heroCanvas"></canvas>
+
+    <!-- Floating grid decoration -->
+    <div class="hero-grid-overlay"></div>
+
+    <div class="hero-content">
+      <!-- Status badge -->
+      <div class="hero-badge reveal-up">
+        <span class="badge-dot"></span>
+        <span>Available for work</span>
+      </div>
+
+      <!-- Main heading -->
+      <h1 class="hero-name reveal-up">
+        <span class="line-1">Pal</span>
+        <span class="line-2">Gajera<span class="name-accent">.</span></span>
+      </h1>
+
+      <!-- Typing animation -->
+      <div class="hero-role reveal-up">
+        <span class="role-prefix">~/dev $ </span>
+        <span id="typingText" class="typing-text"></span>
+        <span class="typing-cursor">|</span>
+      </div>
+
+      <!-- Short tagline -->
+      <p class="hero-tagline reveal-up">
+        Crafting scalable backends &amp; elegant APIs<br />
+        that power the web from the inside out.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="hero-cta reveal-up">
+        <a href="#contact" class="btn btn-primary">
+          <span>Hire Me</span>
+          <svg viewBox="0 0 24 24" width="16" height="16">
+            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" />
+          </svg>
+        </a>
+        <a href="#projects" class="btn btn-ghost">
+          <span>View Projects</span>
+        </a>
+      </div>
+
+      <!-- Quick stats -->
+      <div class="hero-stats reveal-up">
+        <div class="stat-item">
+          <span class="stat-num" data-target="1">0</span><span class="stat-plus">+</span>
+          <span class="stat-label">Years Exp.</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num" data-target="10">0</span><span class="stat-plus">+</span>
+          <span class="stat-label">Projects</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num" data-target="10">0</span><span class="stat-plus">+</span>
+          <span class="stat-label">Happy Clients</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator">
+      <span>scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       ABOUT SECTION
+  ═══════════════════════════════════════════════ -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-label reveal-left">/ about me</div>
+
+      <div class="about-grid">
+        <!-- Left: image / visual -->
+        <div class="about-visual reveal-left">
+          <div class="about-img-frame">
+            <div class="about-img-inner">
+              <div class="avatar-placeholder">
+                <img src="img/myimg.jpeg" <!-- <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="45" r="22" fill="var(--accent-1)" opacity="0.8" />
+                <ellipse cx="60" cy="95" rx="35" ry="22" fill="var(--accent-1)" opacity="0.8" />
+                <circle cx="60" cy="60" r="58" fill="none" stroke="var(--accent-2)" stroke-width="1"
+                  stroke-dasharray="6 4" />
+                </svg> -->
+              </div>
+            </div>
+            <div class="img-glow"></div>
+          </div>
+          <!-- Tech orbit tags -->
+          <div class="orbit-tag tag-1">Python</div>
+          <div class="orbit-tag tag-2">Django</div>
+          <div class="orbit-tag tag-3">REST API</div>
+          <div class="orbit-tag tag-4">MySQL</div>
+        </div>
+
+        <!-- Right: text + skill bars -->
+        <div class="about-text reveal-right">
+          <h2 class="section-title">Turning ideas into<br /><em>scalable reality.</em></h2>
+          <p class="about-bio">
+            I'm a Python developer obsessed with clean architecture and performance.
+            With 4+ years building robust backend systems, I specialize in Django,
+            REST APIs, and database optimization — turning complex requirements into
+            elegant, maintainable code.
+          </p>
+          <p class="about-bio">
+            When I'm not crafting APIs, you'll find me contributing to open source,
+            exploring system design patterns, or mentoring junior devs.
+          </p>
+
+          <!-- Skill progress bars -->
+          <div class="skill-bars">
+            <div class="skill-bar-item reveal-up">
+              <div class="bar-header">
+                <span class="bar-name">Python / Django</span>
+                <span class="bar-pct">95%</span>
+              </div>
+              <div class="bar-track">
+                <div class="bar-fill" data-width="95"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item reveal-up">
+              <div class="bar-header">
+                <span class="bar-name">REST API / DRF</span>
+                <span class="bar-pct">92%</span>
+              </div>
+              <div class="bar-track">
+                <div class="bar-fill" data-width="92"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item reveal-up">
+              <div class="bar-header">
+                <span class="bar-name">SQL / PostgreSQL</span>
+                <span class="bar-pct">88%</span>
+              </div>
+              <div class="bar-track">
+                <div class="bar-fill" data-width="88"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item reveal-up">
+              <div class="bar-header">
+                <span class="bar-name">Html / css</span>
+                <span class="bar-pct">85%</span>
+              </div>
+              <div class="bar-track">
+                <div class="bar-fill" data-width="85"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       SKILLS SECTION
+  ═══════════════════════════════════════════════ -->
+  <section id="skills" class="section section-alt">
+    <div class="container">
+      <div class="section-label reveal-up">/ tech stack</div>
+      <h2 class="section-title centered reveal-up">Tools I master.</h2>
+      <p class="section-sub reveal-up">A curated stack for building production-grade systems.</p>
+
+      <div class="skills-grid">
+
+        <!-- Skill card: Python -->
+        <div class="skill-card reveal-up" data-delay="0">
+          <div class="skill-card-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M24.047 5c-13.255 0-12.44 5.75-12.44 5.75l.015 5.954H24.3v1.787H7.725S0 17.614 0 31.002C0 44.39 6.724 43.93 6.724 43.93h4.017v-6.166S10.52 31.04 17.333 31.04h11.6s6.467.104 6.467-6.25V11.218S36.33 5 24.047 5zm-6.471 3.73a2.087 2.087 0 1 1 0 4.175 2.087 2.087 0 0 1 0-4.175z"
+                fill="url(#py1)" />
+              <path
+                d="M24.045 43.001c13.255 0 12.44-5.75 12.44-5.75l-.015-5.954H23.794v-1.787h16.576S48 30.386 48 16.998C48 3.61 41.276 4.07 41.276 4.07H37.26v6.166s.22 6.724-6.592 6.724h-11.6s-6.467-.104-6.467 6.25v13.572s-.93 5.218 11.444 5.218zm6.47-3.73a2.087 2.087 0 1 1 0-4.175 2.087 2.087 0 0 1 0 4.175z"
+                fill="url(#py2)" />
+              <defs>
+                <linearGradient id="py1" x1="0" y1="0" x2="36" y2="48" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#00D4FF" />
+                  <stop offset="1" stop-color="#7B2FFF" />
+                </linearGradient>
+                <linearGradient id="py2" x1="12" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#FF6B6B" />
+                  <stop offset="1" stop-color="#FF9F43" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <h3 class="skill-card-name">Python</h3>
+          <div class="skill-card-level">
+            <div class="level-bar" data-level="95"></div>
+          </div>
+          <span class="skill-card-pct">95%</span>
+          <p class="skill-card-desc">Core language for all backend systems, scripting & automation.</p>
+        </div>
+
+        <!-- Skill card: Django -->
+        <div class="skill-card reveal-up" data-delay="1">
+          <div class="skill-card-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="8" y="4" width="10" height="40" rx="2" fill="url(#dj1)" />
+              <rect x="22" y="4" width="10" height="26" rx="2" fill="url(#dj1)" />
+              <path d="M22 34c0 5.523 4.477 10 10 10s10-4.477 10-10-4.477-10-10-10" stroke="url(#dj2)"
+                stroke-width="2.5" fill="none" />
+              <defs>
+                <linearGradient id="dj1" x1="0" y1="0" x2="0" y2="48" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#00FF9C" />
+                  <stop offset="1" stop-color="#00B4D8" />
+                </linearGradient>
+                <linearGradient id="dj2" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#00FF9C" />
+                  <stop offset="1" stop-color="#7B2FFF" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <h3 class="skill-card-name">Django</h3>
+          <div class="skill-card-level">
+            <div class="level-bar" data-level="92"></div>
+          </div>
+          <span class="skill-card-pct">92%</span>
+          <p class="skill-card-desc">Full-stack web framework for rapid, secure development.</p>
+        </div>
+
+        <!-- Skill card: REST API -->
+        <div class="skill-card reveal-up" data-delay="2">
+          <div class="skill-card-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="24" r="7" stroke="url(#api1)" stroke-width="2.5" />
+              <circle cx="36" cy="12" r="7" stroke="url(#api1)" stroke-width="2.5" />
+              <circle cx="36" cy="36" r="7" stroke="url(#api1)" stroke-width="2.5" />
+              <line x1="19" y1="21" x2="29" y2="15" stroke="url(#api2)" stroke-width="2" />
+              <line x1="19" y1="27" x2="29" y2="33" stroke="url(#api2)" stroke-width="2" />
+              <defs>
+                <linearGradient id="api1" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#FF6B9D" />
+                  <stop offset="1" stop-color="#FF9F43" />
+                </linearGradient>
+                <linearGradient id="api2" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#FF6B9D" />
+                  <stop offset="1" stop-color="#FF9F43" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <h3 class="skill-card-name">REST API</h3>
+          <div class="skill-card-level">
+            <div class="level-bar" data-level="90"></div>
+          </div>
+          <span class="skill-card-pct">90%</span>
+          <p class="skill-card-desc">Designing and building scalable RESTful services with DRF.</p>
+        </div>
+
+        <!-- Skill card: MySQL / PostgreSQL -->
+        <div class="skill-card reveal-up" data-delay="3">
+          <div class="skill-card-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="24" cy="12" rx="16" ry="6" stroke="url(#db1)" stroke-width="2.5" />
+              <path d="M8 12v10c0 3.314 7.163 6 16 6s16-2.686 16-6V12" stroke="url(#db1)" stroke-width="2.5" />
+              <path d="M8 22v10c0 3.314 7.163 6 16 6s16-2.686 16-6V22" stroke="url(#db2)" stroke-width="2.5" />
+              <defs>
+                <linearGradient id="db1" x1="0" y1="0" x2="48" y2="0" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#00D4FF" />
+                  <stop offset="1" stop-color="#7B2FFF" />
+                </linearGradient>
+                <linearGradient id="db2" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#7B2FFF" />
+                  <stop offset="1" stop-color="#FF6B9D" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <h3 class="skill-card-name">MySQL / PgSQL</h3>
+          <div class="skill-card-level">
+            <div class="level-bar" data-level="88"></div>
+          </div>
+          <span class="skill-card-pct">88%</span>
+          <p class="skill-card-desc">Complex queries, indexing, optimization & schema design.</p>
+        </div>
+
+        <!-- Skill card: JavaScript -->
+        <div class="skill-card reveal-up" data-delay="4">
+          <div class="skill-card-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="4" y="4" width="40" height="40" rx="4" fill="url(#js1)" opacity="0.2" />
+              <rect x="4" y="4" width="40" height="40" rx="4" stroke="url(#js1)" stroke-width="2" />
+              <path d="M16 32c0 2.5 1.5 4 4 4s4-1.5 4-5V20" stroke="url(#js2)" stroke-width="2.5"
+                stroke-linecap="round" />
+              <path d="M28 20v8c0 2 1 4 4 4" stroke="url(#js2)" stroke-width="2.5" stroke-linecap="round" />
+              <defs>
+                <linearGradient id="js1" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#FFD93D" />
+                  <stop offset="1" stop-color="#FF9F43" />
+                </linearGradient>
+                <linearGradient id="js2" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#FFD93D" />
+                  <stop offset="1" stop-color="#FF6B9D" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <h3 class="skill-card-name">JavaScript</h3>
+          <div class="skill-card-level">
+            <div class="level-bar" data-level="75"></div>
+          </div>
+          <span class="skill-card-pct">75%</span>
+          <p class="skill-card-desc">Frontend interactivity, async logic and browser APIs.</p>
+        </div>
+
+        <!-- Skill card: Docker / DevOps -->
+        <div class="skill-card reveal-up" data-delay="5">
+          <div class="skill-card-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="6" y="16" width="8" height="7" rx="1" stroke="url(#dk1)" stroke-width="2" />
+              <rect x="16" y="16" width="8" height="7" rx="1" stroke="url(#dk1)" stroke-width="2" />
+              <rect x="26" y="16" width="8" height="7" rx="1" stroke="url(#dk1)" stroke-width="2" />
+              <rect x="16" y="8" width="8" height="7" rx="1" stroke="url(#dk1)" stroke-width="2" />
+              <path d="M4 28c0 0 2-3 8-3 3 0 5 1 8 1 5 0 8-3 14-3 4 0 8 2 10 5" stroke="url(#dk2)" stroke-width="2.5"
+                stroke-linecap="round" />
+              <defs>
+                <linearGradient id="dk1" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#00D4FF" />
+                  <stop offset="1" stop-color="#00FF9C" />
+                </linearGradient>
+                <linearGradient id="dk2" x1="0" y1="0" x2="48" y2="0" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#00D4FF" />
+                  <stop offset="1" stop-color="#7B2FFF" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <h3 class="skill-card-name">Docker / CI-CD</h3>
+          <div class="skill-card-level">
+            <div class="level-bar" data-level="80"></div>
+          </div>
+          <span class="skill-card-pct">80%</span>
+          <p class="skill-card-desc">Containerized deployments, pipelines & cloud infrastructure.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       PROJECTS SECTION
+  ═══════════════════════════════════════════════ -->
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="section-label reveal-up">/ featured work</div>
+      <h2 class="section-title centered reveal-up">Projects that ship.</h2>
+      <p class="section-sub reveal-up">Hand-picked builds that show real-world impact.</p>
+
+      <div class="projects-grid">
+
+        <!-- Project 1 -->
+        <article class="project-card reveal-up" data-delay="0">
+          <div class="project-card-inner">
+            <div class="project-header">
+              <div class="project-num">01</div>
+              <div class="project-links">
+                <a href="#" class="project-link" title="Live Demo">
+                  <svg viewBox="0 0 24 24" width="18" height="18">
+                    <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"
+                      stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" />
+                  </svg>
+                </a>
+                <a href="https://github.com/pal2711" class="project-link" title="GitHub">
+                  <svg viewBox="0 0 24 24" width="18" height="18">
+                    <path
+                      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"
+                      stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="project-visual">
+              <div class="project-mockup mockup-1">
+                <div class="mock-bar"></div>
+                <div class="mock-line"></div>
+                <div class="mock-line short"></div>
+                <div class="mock-grid">
+                  <div class="mock-cell"></div>
+                  <div class="mock-cell"></div>
+                  <div class="mock-cell"></div>
+                </div>
+              </div>
+            </div>
+            <h3 class="project-title">Model Booking</h3>
+            <p class="project-desc">
+              A model booking platform helps clients find and hire professional models for events, photoshoots, and promotions. It allows easy browsing of profiles, checking availability, and booking appointments online.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Django</span>
+              <span class="tag">DRF</span>
+              <span class="tag">Celery</span>
+              <span class="tag">Redis</span>
+              <span class="tag">PostgreSQL</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project-card reveal-up featured-card" data-delay="1">
+          <div class="project-featured-label">Featured</div>
+          <div class="project-card-inner">
+            <div class="project-header">
+              <div class="project-num">02</div>
+              <div class="project-links">
+                <a href="#" class="project-link" title="Live Demo">
+                  <svg viewBox="0 0 24 24" width="18" height="18">
+                    <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"
+                      stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" />
+                  </svg>
+                </a>
+                <a href="https://github.com/pal2711" class="project-link" title="GitHub">
+                  <svg viewBox="0 0 24 24" width="18" height="18">
+                    <path
+                      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"
+                      stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="project-visual">
+              <div class="project-mockup mockup-2">
+                <div class="mock-bar"></div>
+                <div class="mock-chat">
+                  <div class="mock-msg right"></div>
+                  <div class="mock-msg left"></div>
+                  <div class="mock-msg right short"></div>
+                </div>
+              </div>
+            </div>
+            <h3 class="project-title">Geen nest</h3>
+            <p class="project-desc">Premium green shade net for crop protection. UV-resistant, durable, and ideal for farming, nurseries, and greenhouses.</p>
+            <div class="project-tags">
+              <span class="tag">Django Channels</span>
+              <span class="tag">WebSocket</span>
+              <span class="tag">Docker</span>
+              <span class="tag">AWS</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project-card reveal-up" data-delay="2">
+          <div class="project-card-inner">
+            <div class="project-header">
+              <div class="project-num">03</div>
+              <div class="project-links">
+                <a href="#" class="project-link" title="Live Demo">
+                  <svg viewBox="0 0 24 24" width="18" height="18">
+                    <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"
+                      stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" />
+                  </svg>
+                </a>
+                <a href="https://github.com/pal2711" class="project-link" title="GitHub">
+                  <svg viewBox="0 0 24 24" width="18" height="18">
+                    <path
+                      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"
+                      stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="project-visual">
+              <div class="project-mockup mockup-3">
+                <div class="mock-bar"></div>
+                <div class="mock-stats">
+                  <div class="mock-stat-bar" style="height:70%"></div>
+                  <div class="mock-stat-bar" style="height:45%"></div>
+                  <div class="mock-stat-bar" style="height:90%"></div>
+                  <div class="mock-stat-bar" style="height:60%"></div>
+                </div>
+              </div>
+            </div>
+            <h3 class="project-title">Cars service booking</h3>
+            <p class="project-desc">Car service book for maintaining vehicle service records. Durable, easy to use, and ideal for tracking maintenance history.</p>
+            <div class="project-tags">
+              <span class="tag">Python</span>
+              <span class="tag">FastAPI</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">MySQL</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="project-card reveal-up" data-delay="3">
+          <div class="project-card-inner">
+            <div class="project-header">
+              <div class="project-num">04</div>
+              <div class="project-links">
+                <a href="#" class="project-link" title="Live Demo">
+                  <svg viewBox="0 0 24 24" width="18" height="18">
+                    <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"
+                      stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" />
+                  </svg>
+                </a>
+                <a href="https://github.com/pal2711" class="project-link" title="GitHub">
+                  <svg viewBox="0 0 24 24" width="18" height="18">
+                    <path
+                      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"
+                      stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="project-visual">
+              <div class="project-mockup mockup-4">
+                <div class="mock-bar"></div>
+                <div class="mock-list">
+                  <div class="mock-list-item">
+                    <div class="mock-avatar"></div>
+                    <div class="mock-text-group">
+                      <div class="mock-line"></div>
+                      <div class="mock-line short"></div>
+                    </div>
+                  </div>
+                  <div class="mock-list-item">
+                    <div class="mock-avatar"></div>
+                    <div class="mock-text-group">
+                      <div class="mock-line"></div>
+                      <div class="mock-line short"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h3 class="project-title">Notes app</h3>
+            <p class="project-desc">Easily send and share notes with others for study, work, or personal use. This feature allows quick and secure sharing of important information anytime, anywhere.</p>
+            <div class="project-tags">
+              <span class="tag">Django</span>
+              <span class="tag">React</span>
+              <span class="tag">Stripe</span>
+              <span class="tag">FFmpeg</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       CONTACT SECTION
+  ═══════════════════════════════════════════════ -->
+  <section id="contact" class="section section-alt">
+    <div class="container">
+      <div class="section-label reveal-up">/ get in touch</div>
+      <h2 class="section-title centered reveal-up">Let's build something.</h2>
+      <p class="section-sub reveal-up">Have a project in mind? Let's talk. I typically respond within 24 hours.</p>
+
+      <div class="contact-wrapper">
+        <!-- Contact info -->
+        <div class="contact-info reveal-left">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                  stroke="currentColor" stroke-width="1.5" fill="none" />
+                <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="1.5" fill="none" />
+              </svg>
+            </div>
+            <div>
+              <span class="contact-label">Email</span>
+              <span class="contact-value">palgajera7@gmail.com</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="currentColor" stroke-width="1.5"
+                  fill="none" />
+                <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.5" fill="none" />
+              </svg>
+            </div>
+            <div>
+              <span class="contact-label">Location</span>
+              <span class="contact-value">Remote · Worldwide</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" fill="none" />
+                <polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="1.5" fill="none"
+                  stroke-linecap="round" />
+              </svg>
+            </div>
+            <div>
+              <span class="contact-label">Availability</span>
+              <span class="contact-value">Open to opportunities</span>
+            </div>
+          </div>
+
+          <!-- Social links in contact -->
+          <div class="contact-socials">
+            <a href="https://github.com/pal2711" class="social-pill">
+              <svg viewBox="0 0 24 24" width="16" height="16">
+                <path
+                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"
+                  stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" />
+              </svg>
+              GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/pal-gajera-92976027b" class="social-pill">
+              <svg viewBox="0 0 24 24" width="16" height="16">
+                <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" stroke="currentColor"
+                  stroke-width="1.5" fill="none" />
+                <rect x="2" y="9" width="4" height="12" stroke="currentColor" stroke-width="1.5" fill="none" />
+                <circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="1.5" fill="none" />
+              </svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+
+        <!-- Contact form -->
+        <form class="contact-form glass-card reveal-right" id="contactForm" novalidate>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="John Doe" autocomplete="off" />
+            <span class="form-error" id="nameError"></span>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="john@example.com" autocomplete="off" />
+            <span class="form-error" id="emailError"></span>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="Project idea / Collaboration..."
+              autocomplete="off" />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..."></textarea>
+            <span class="form-error" id="messageError"></span>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">
+            <span>Send Message</span>
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <line x1="22" y1="2" x2="11" y2="13" stroke="currentColor" stroke-width="2" />
+              <polygon points="22 2 15 22 11 13 2 9 22 2" stroke="currentColor" stroke-width="2" fill="none" />
+            </svg>
+          </button>
+          <div id="formSuccess" class="form-success hidden">
+            <span>✓</span> Message sent! I'll be in touch soon.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════ -->
+  <footer id="footer">
+    <div class="footer-inner container">
+      <div class="footer-logo">
+        <span class="logo-bracket">{</span>
+        <span class="logo-text">PG</span>
+        <span class="logo-bracket">}</span>
+      </div>
+      <div class="footer-socials">
+        <a href="https://github.com/pal2711" class="footer-social" title="GitHub" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"
+              stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" />
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/pal-gajera-92976027b" class="footer-social" title="LinkedIn" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" stroke="currentColor"
+              stroke-width="2" fill="none" />
+            <rect x="2" y="9" width="4" height="12" stroke="currentColor" stroke-width="2" fill="none" />
+            <circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="2" fill="none" />
+          </svg>
+        </a>
+        <a href="https://x.com/GajeraPal55013" class="footer-social" title="Twitter/X" aria-label="Twitter">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path
+              d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"
+              stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>
